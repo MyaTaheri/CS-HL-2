@@ -9,13 +9,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class RSP2 extends JFrame implements ActionListener
+public class RPS2 extends JFrame implements ActionListener
 {
     private JTextField originalMessageField;
     private JLabel palindromeLabel;
 
-	public RSP2() {
-		super("RSP2");
+	public RPS2() {
+		super("RPS2");
 		setSize(800,650);
         this.setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,7 +71,7 @@ public class RSP2 extends JFrame implements ActionListener
     }
 
     public static void main(String[] args) {
-		RSP2 rsp2 = new RSP2();
-		rsp2.setVisible(true);	
+		RPS2 rps2 = new RPS2();
+		rps2.setVisible(true);	
 	}
 }
