@@ -7,14 +7,12 @@ import java.awt.*;
 
 public class RSP2 extends JFrame implements ActionListener
 {
-    private JLabel compWinLabel;
-    private JLabel playerWinLabel;
-    private JLabel resultsLabel;
+    private JLabel compWinLabel,playerRoundsLabel,compRoundsLabel, playerWinLabel, resultsLabel;
     private JButton submitButton;
     private JComboBox<String> cb;
     private String[] choices = { "rock","paper", "scissors"};
-    private int compWins = 0;
-    private int playerWins = 0;
+    private int compWins, compRounds = 0;
+    private int playerWins, playerRounds = 0;
 
 
 	public RSP2() {
@@ -46,6 +44,16 @@ public class RSP2 extends JFrame implements ActionListener
             playerWinLabel.setFont(new Font("Ariel", Font.PLAIN, 16));
             playerWinLabel.setForeground(fontColor);
 			add(playerWinLabel);
+        playerRoundsLabel = new JLabel("Player Rounds: " + playerRounds);
+            playerRoundsLabel.setBounds(200, 160, 750, 50);
+            playerRoundsLabel.setFont(new Font("Ariel", Font.PLAIN, 16));
+            playerRoundsLabel.setForeground(fontColor);
+			add(playerRoundsLabel);
+        compRoundsLabel = new JLabel("Computer Rounds: " + compRounds);
+            compRoundsLabel.setBounds(200, 200, 750, 50);
+            compRoundsLabel.setFont(new Font("Ariel", Font.PLAIN, 16));
+            compRoundsLabel.setForeground(fontColor);
+			add(compRoundsLabel);
 		compWinLabel = new JLabel("Computer wins: " + compWins);
             compWinLabel.setBounds(40, 200, 750, 50);
             compWinLabel.setFont(new Font("Ariel", Font.PLAIN, 16));
@@ -96,19 +104,29 @@ public class RSP2 extends JFrame implements ActionListener
             }
             else
             {
-                // tie++;
-                // game--;
                 winner = "no one";
             }
 
             resultsLabel.setText(compPlay + " vs " + playerPlay + ": " + winner + " won this round");
             playerWinLabel.setText("Player wins: " + playerWins);
             compWinLabel.setText("Computer wins: " + compWins);
-
-            if (Math.abs(compWins - playerWins) >= 2 || compWins > 3 || playerWins > 3)
+            
+            // each round out of 3
+            // play 5 rounds
+            if (compWins >= 2 || playerWins >= 2)
             {
-                submitButton.setEnabled(false);
+                if (compWins == 2)
+                    compRounds++;
+                if (playerWins == 2)
+                    playerRounds++;
+               playerWins = 0;
+               compWins = 0;
             }
+            if (compRounds == 3 || playerRounds == 3)
+                submitButton.setEnabled(false);
+            
+            playerRoundsLabel.setText("Player Rounds: " + playerRounds);
+            compRoundsLabel.setText("Computer Rounds: " + compRounds);
         }
     }
 
