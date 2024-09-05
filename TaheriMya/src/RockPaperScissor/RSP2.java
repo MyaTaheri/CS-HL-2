@@ -5,12 +5,14 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
 
+//executor = sammuell roebrt nonrton
+
 public class RSP2 extends JFrame implements ActionListener
 {
     private JLabel compWinLabel,playerRoundsLabel,compRoundsLabel, playerWinLabel, resultsLabel;
     private JButton submitButton;
     private JComboBox<String> cb;
-    private String[] choices = { "rock","paper", "scissors"};
+    private String[] choices = {"rock","paper", "scissors"};
     private int compWins, compRounds = 0;
     private int playerWins, playerRounds = 0;
 
@@ -22,7 +24,7 @@ public class RSP2 extends JFrame implements ActionListener
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(null);
 
-        Color backgroundColor = new Color(237, 242, 194);
+        Color backgroundColor = new Color(212, 203, 203);
         Color fontColor = new Color (41, 77, 120);
 
         getContentPane().setBackground(backgroundColor);
