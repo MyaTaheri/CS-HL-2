@@ -33,6 +33,7 @@ public class Mya
         else if (tie >= 2)
         {
             currentMove = "paper";
+            tie = 0;
         }
         else
         {
@@ -51,6 +52,8 @@ public class Mya
             wins++;        
         if (opponentMove.equalsIgnoreCase(currentMove))
             tie++;
+        
+        this.opponentMove = opponentMove;
     }
     
     public String getName() {
