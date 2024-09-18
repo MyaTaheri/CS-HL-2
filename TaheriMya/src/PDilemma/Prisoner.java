@@ -1,12 +1,9 @@
-package Other;
+package PDilemma;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-
-import RockPaperScissor.RSP2;
-
 import java.awt.*;
 
 public class Prisoner extends JFrame implements ActionListener
@@ -18,7 +15,7 @@ public class Prisoner extends JFrame implements ActionListener
     private JLabel resultLabel;
     
     public Prisoner() {
-		super("Prisoner");
+		super("Prisoner's Dilemma");
 		setSize(400,400);
         this.setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
