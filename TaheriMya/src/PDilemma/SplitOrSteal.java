@@ -10,9 +10,11 @@ public class SplitOrSteal extends JFrame implements ActionListener{
 
     JComboBox person1cb;
     JComboBox person2cb;
-    JLabel resultsLabel;
+    JLabel resultsLabel,p1MoneyLabel, p2MoneyLabel;
+    int player1Money, player2Money, roundsPlayed;
     private String[] choices = {"split","steal"};
     JButton submitButton;
+
 
     public SplitOrSteal()
     {
@@ -36,6 +38,7 @@ public class SplitOrSteal extends JFrame implements ActionListener{
             instructionText.setText("There are 2 players. Each will have 2 options, split or steal. \nIf both players choose split, they each get 100. \nIf both players choose steal, they both get 0 \nIf one chooses split and the other chooses steal, the one who steals recieves 250 while the one who chose splits recieves 0.");
             instructionText.setEditable(false);
             instructionText.setBounds(5,5,695, 145);
+            instructionText.setBackground(customYellow);
             instructionText.setLineWrap(true);
             panel1.add(instructionText);
         JPanel panel2 = new JPanel();
@@ -53,8 +56,12 @@ public class SplitOrSteal extends JFrame implements ActionListener{
             resultsLabel = new JLabel();
             submitButton = new JButton("Submit");
             submitButton.addActionListener(this);
+            p1MoneyLabel = new JLabel();
+            p2MoneyLabel = new JLabel();
             panel4.add(resultsLabel);
             panel4.add(submitButton);
+            panel4.add(p1MoneyLabel); 
+            panel4.add(p2MoneyLabel);
 
             
         sPane.add("instructions", panel1); 
@@ -74,26 +81,35 @@ public class SplitOrSteal extends JFrame implements ActionListener{
             String person2 = (String)person2cb.getSelectedItem();
             String result = "";
 
-            System.out.println("debug");
-
             if (person1.equals("steal") && person2.equals("split"))
             {
-                result = "Person 1 has 250 dollars while Person 2 has 0 dollars";
+                result = "Person 1 earned 250 dollars while Person 2  earned 0 dollars";
+                player1Money += 250;
             }
             else if (person1.equals("split") && person1.equals("steal"))
             {
-                result = "Person 1 has 0 dollars while Person 2 has 250 dollars";
+                result = "Person 1 earned 0 dollars while Person 2 earned 250 dollars";
+                player2Money += 250;
             }
             else if (person1.equals("steal") && person1.equals("steal"))
             {
-                result = "Person 1 has 0 dollars  while Person 2 has 0 dollars";
+                result = "Person 1 earned 0 dollars  while Person 2 searned 0 dollars";
             }
             else 
             {
-                result = "Person 1 has 100 dollars while Person 2 has 100 dollars";
+                result = "Person 1 earned 100 dollars while Person 2  earned 100 dollars";
+                player1Money += 100;
+                player2Money += 250;
             }
             resultsLabel.setText(result);
-            submitButton.setEnabled(false);
+            p1MoneyLabel.setText("Player 1: $" + player1Money);
+            p2MoneyLabel.setText("Player 2: $" + player1Money);
+            roundsPlayed++;
+           
+            if (roundsPlayed == 3)
+            {
+                submitButton.setEnabled(false);
+            }
         }
     }
     
