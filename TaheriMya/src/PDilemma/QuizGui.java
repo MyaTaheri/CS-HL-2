@@ -2,6 +2,11 @@ package PDilemma;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -92,6 +97,10 @@ public class QuizGui  extends JFrame implements ActionListener
                     tablePane.setPreferredSize(new Dimension(600, 400));
                     tablePane.setForeground(Color.black);
                     resultsPanel.add(tablePane);
+                    JButton saveButton = new JButton("save file");
+                    saveButton.addActionListener(this);
+                    saveButton.setBounds(650, 0, 100, 50);
+                    resultsPanel.add(saveButton);
                 
             tPane.add("instructions", instructionPanel); 
             tPane.add("quiz", quizPanel); 
@@ -105,7 +114,7 @@ public class QuizGui  extends JFrame implements ActionListener
         if (e.getActionCommand().equals("check answer"))
         {
             String studentAnswer = inputField.getText();
-            if (studentAnswer.startsWith("incorrect")) //TODO: fix why first answer is not no answer
+            if (studentAnswer.startsWith("incorrect") || studentAnswer.equals(" "))
                 studentAnswer = "no answer";
             compiledData[currentQuestionNum -1][3] = studentAnswer;
             
@@ -133,6 +142,33 @@ public class QuizGui  extends JFrame implements ActionListener
                 questionLabel.setText("quiz complete! check out your results in the next tab");
             }
         }  
+        if (e.getActionCommand().equals("save file"))
+        {
+
+            PrintWriter outputStream = null;
+            try
+            {
+                File file = new File("/Users/mt25190/Desktop/CS-HL2-Projects/TaheriMya/src/compiledData.txt");
+                outputStream = new PrintWriter(new FileOutputStream(file, false));
+                outputStream.println("");
+                outputStream.close(); 
+
+                outputStream = new PrintWriter(new FileOutputStream(file, true));
+                outputStream.println("Question Number, Question, Correct Answer, Student Answer, Result \n");
+
+                for (int i = 0; i < compiledData.length; i++) {
+                    outputStream.println(compiledData[i][0] + ", " + compiledData[i][1] + ", " + compiledData[i][2] + ", " + compiledData[i][3] + ", " + compiledData[i][4]);
+                }
+                
+                outputStream.close(); 
+            }
+            catch(FileNotFoundException err)
+            {
+                System.out.println("file not found");
+                System.exit(0);
+            }
+            
+        }
     }
 }
 
