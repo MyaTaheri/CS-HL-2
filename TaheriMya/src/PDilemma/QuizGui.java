@@ -148,7 +148,7 @@ public class QuizGui  extends JFrame implements ActionListener
             PrintWriter outputStream = null;
             try
             {
-                File file = new File("/Users/mt25190/Desktop/CS-HL2-Projects/TaheriMya/src/compiledData.txt");
+                File file = new File("/Users/mt25190/Desktop/CS-HL2-Projects/TaheriMya/src/quizData.txt");
                 outputStream = new PrintWriter(new FileOutputStream(file, false));
                 outputStream.println("");
                 outputStream.close(); 
