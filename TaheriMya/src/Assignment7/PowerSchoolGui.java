@@ -22,6 +22,7 @@ public class PowerSchoolGui extends JFrame implements ActionListener
     private JTable studentTable;
     private String[][] data  = new String[30][4];
     private int numOfStudents = 0;
+    private Color darkGrey = new Color(160, 169, 186);
     
 
     public PowerSchoolGui()
@@ -122,9 +123,13 @@ public class PowerSchoolGui extends JFrame implements ActionListener
             else
             {
                 nameText.setEditable(false);
+                nameText.setBackground(darkGrey);
                 GPAText.setEditable(false);
+                GPAText.setBackground(darkGrey);
                 heightText.setEditable(false);
+                heightText.setBackground(darkGrey);
                 numOfIBCoursesText.setEditable(false);
+                numOfIBCoursesText.setBackground(darkGrey);
                 nameText.setText("Class is full!");
                 GPAText.setText("Class is full!");
                 heightText.setText("Class is full!");
