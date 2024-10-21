@@ -1,5 +1,4 @@
 
 Name, GPA, Height, Number of IB courses 
 
-abd, 29.0, 5.2, 12
-bobbb, 29.0, 5.2, 12
+ugui, 6.78, 0.94, 78
