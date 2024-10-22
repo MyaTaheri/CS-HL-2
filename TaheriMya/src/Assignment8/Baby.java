@@ -13,6 +13,11 @@ public class Baby
         this.numOfName = numOfName;
     }
 
+    public void increaseNumOfName(int numToInc)
+    {
+        this.numOfName += numToInc;
+    }
+
     public String getName()
     {
         return this.name;
@@ -28,4 +33,9 @@ public class Baby
         return this.numOfName;
     }
 
+    @Override
+    public String toString() {
+        return "Name: " + name + ", Sex: " + sex + ", NumOfName: " + numOfName;
+    }
+    
 }
