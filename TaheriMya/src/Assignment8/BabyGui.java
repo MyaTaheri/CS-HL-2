@@ -19,7 +19,7 @@ public class BabyGui extends JFrame implements ActionListener
     JComboBox sexComboBox;
     private String[] sexChoices = {"Any","Female","Male"};
     JTextField nameField;
-    JButton sortTableButton, searchListButton, splitFileButton;
+    JButton clearTableButton, searchListButton, splitFileButton;
     ArrayList<Baby> babyList = new ArrayList<>();
  
 
@@ -47,11 +47,11 @@ public class BabyGui extends JFrame implements ActionListener
         searchListButton.setEnabled(false);
         add(searchListButton);
 
-        sortTableButton = new JButton("Sort Table");
-        sortTableButton.addActionListener(this);
-        sortTableButton.setBounds(160, 107, 125, 30);
-        sortTableButton.setEnabled(false);
-        add(sortTableButton);
+        clearTableButton = new JButton("Clear Table");
+        clearTableButton.addActionListener(this);
+        clearTableButton.setBounds(160, 107, 125, 30);
+        clearTableButton.setEnabled(false);
+        add(clearTableButton);
 
         JLabel nameSearchLabel = new JLabel("What name would you like to search?");
         nameSearchLabel.setBounds(300, 17, 250, 30);
@@ -76,7 +76,7 @@ public class BabyGui extends JFrame implements ActionListener
         if (e.getActionCommand().equals("Split File"))
         {
             searchListButton.setEnabled(true);
-            sortTableButton.setEnabled(true);
+            clearTableButton.setEnabled(true);
             splitFileButton.setEnabled(false);
 
             String line = "";
@@ -85,7 +85,7 @@ public class BabyGui extends JFrame implements ActionListener
             {
                 File file = new File("/Users/mt25190/Desktop/CS-HL2-Projects/TaheriMya/bnames2007.csv");
                 BufferedReader br = new BufferedReader(new FileReader (file));
-                System.out.println(br.readLine());
+                br.readLine();
 
                 while ((line = br.readLine()) != null) {
                     String[] info = line.split(splitBy);
@@ -125,7 +125,6 @@ public class BabyGui extends JFrame implements ActionListener
             String name = nameField.getText();
             int numOfNames = 0;
             String sexSelected = (String)sexComboBox.getSelectedItem();
-            System.out.println(sexSelected);
             char sexChar = 'A';
             String tableString = "";
             if (sexSelected.equals("Male"))
@@ -157,14 +156,15 @@ public class BabyGui extends JFrame implements ActionListener
                 }
             }
             updateTable(tableString, numOfNames);
-            System.out.println(name);
-            System.out.println(numOfNames);
-
         }
 
-        if (e.getActionCommand().equals("Sort Table"))
+        if (e.getActionCommand().equals("Clear Table"))
         {
-
+            for (int i = 0; i< 5; i++)
+            {
+                recentSearchData[i][0] = null;
+                recentSearchData[i][1] = null;
+            }
         }
     }
 
