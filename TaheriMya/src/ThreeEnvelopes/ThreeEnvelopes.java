@@ -63,10 +63,12 @@ public class ThreeEnvelopes
     {
         int randomNum = (int)(Math.random() * 3);
         boolean isChosen = (randomNum == chosenEnvelope);
-        boolean isWinning = envelopes[randomNum] == 1000;
-        while (isChosen && isWinning)
+        boolean isWinning = envelopes[randomNum] > 0;
+        while (isChosen || isWinning)
         {
             randomNum = (int)(Math.random() * 3);
+            isChosen = (randomNum == chosenEnvelope);
+            isWinning = envelopes[randomNum] > 0;
         }
 
         System.out.println(envelopes[randomNum] + randomNum);
