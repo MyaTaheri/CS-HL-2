@@ -44,11 +44,11 @@ public class Search
         {
             if (num > array[middle])
             {
-                left = middle;
+                left = middle + 1;
             }
             if (array[middle] > num)
             {
-                right = middle;
+                right = middle - 1;
             }
             middle = (left + right) / 2;
         }
