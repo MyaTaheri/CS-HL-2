@@ -2,8 +2,13 @@ package QueueAndStack;
 
 public class Stack 
 {
-    String[] lunchLine = new String[5];
+    String[] lunchLine;
 
+
+    public Stack(int length)
+    {
+        lunchLine = new String[length];
+    }
     public void pop() //out
     {
         if (lunchLine[0] == null)
@@ -62,7 +67,7 @@ public class Stack
 
     public boolean isFull()
     {
-        if (lunchLine[4] == null)
+        if (lunchLine[lunchLine.length - 1] == null)
             return false;
         else
             return true;

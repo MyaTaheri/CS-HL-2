@@ -2,7 +2,12 @@ package QueueAndStack;
 
 public class Queue 
 {
-    String[] lunchLine = new String[5];
+    String[] lunchLine;
+
+    public Queue(int length)
+    {
+        lunchLine = new String[length];
+    }
 
     public void dequeue() //out
     {
@@ -11,7 +16,7 @@ public class Queue
             String tempName = lunchLine[i];
             lunchLine[i-1] = tempName;
         }
-        lunchLine[4] = null;
+        lunchLine[lunchLine.length - 1] = null;
     }
     
     public void enqueue(String name) //in
@@ -41,7 +46,7 @@ public class Queue
 
     public boolean isFull()
     {
-        if (lunchLine[4] == null)
+        if (lunchLine[lunchLine.length - 1] == null)
             return false;
         else
             return true;

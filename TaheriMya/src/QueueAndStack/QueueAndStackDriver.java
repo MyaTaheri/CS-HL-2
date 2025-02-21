@@ -12,9 +12,11 @@ public class QueueAndStackDriver
         Scanner kb = new Scanner (System.in);
         System.out.println("Dear Lunch Lady, do you want to use a stack or queue?");
         String answer = kb.next();
+        System.out.println("How long can the line be?");
+        int length = kb.nextInt();
         if (answer.equalsIgnoreCase("queue"))
         {
-            Queue list = new Queue();
+            Queue list = new Queue(length);
             int x = -1;
             while (x!= 7)
             {
@@ -50,7 +52,7 @@ public class QueueAndStackDriver
         }
         if (answer.equalsIgnoreCase("stack"))
         {
-            Stack list = new Stack();
+            Stack list = new Stack(length);
             int x = -1;
             while (x!= 7)
             {
